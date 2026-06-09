@@ -11,21 +11,27 @@ import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 
 export default function Calendar() {
+  const API_URL = import.meta.env.VITE_API_BASE_URL;
+
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    if (!API_URL) {
+      console.error("API_URL is missing");
+      return;
+    }
+
     axios
       .get(`${API_URL}/api/services/services/`)
       .then((res) => {
-        console.log("API DATA:", res.data);
+      console.log("API DATA:", res.data);
 
         setEvents(
           res.data.map((service) => ({
             title: service.title,
 
-            // Keep your existing fields since these are working
             start: service.start_time,
             finish: service.end_time,
             begin: service.start_date,
@@ -41,8 +47,8 @@ export default function Calendar() {
           })),
         );
       })
-      .catch((err) => console.error(err));
-  }, []);
+      .catch((err) => console.error("Calendar API error:", err));
+  }, [API_URL]);
 
   const handleEventClick = (info) => {
     console.log("Clicked Event:", info.event);
