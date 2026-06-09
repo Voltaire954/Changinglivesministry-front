@@ -19,6 +19,8 @@ import BasicCard from "./component/Sermons";
 import Stream from "./component/Stream";
 import Login from "./component/Login";
 import Profile from "./component/Profile";
+import Donation from "./component/Donation";
+import Calendar from "./component/Calendar";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -35,6 +37,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/stream" element={<Stream />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/donation" element={<Donation />} />
+          <Route path="/calendar" element={<Calendar />} />
         </Routes>
         <Footer />
       </Router>

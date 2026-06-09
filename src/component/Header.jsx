@@ -6,6 +6,9 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Login from "./Login";
 import Signup from "./Signup";
+import Donation from "./Donation";
+import Calendar from "./Calendar";
+
 
 export default function Header() {
   const [loginOpen, setLoginOpen] = useState(false);
@@ -55,8 +58,10 @@ export default function Header() {
             <Link to="/about">About us</Link>
             <Link to="/stream">Lives</Link>
             <Link to="/contact">Contact us</Link>
+            <Link to="/calendar">Calendar</Link>
+            <Link to="/donation">Donations</Link>
 
-            {user ? (
+            {/* {user ? (
               <>
                 <Button color="inherit">Hi, {user.username}</Button>
                 <Button color="inherit" onClick={handleLogout}>
@@ -66,13 +71,17 @@ export default function Header() {
             ) : (
               <>
                 <Button color="inherit" onClick={() => setLoginOpen(true)}>
-                  Login
+                  Calendar
                 </Button>
-                <Button color="inherit" onClick={() => setSignupOpen(true)}>
-                  Sign Up
+                <Button
+                  color="inherit"
+                  onClick={() => setSignupOpen(true)}
+                  style={{ textDecoration: "none", listStyle: "none" }}
+                >
+                  Donations
                 </Button>
               </>
-            )}
+            )} */}
           </Toolbar>
         </AppBar>
       </Box>
