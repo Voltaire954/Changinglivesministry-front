@@ -8,7 +8,7 @@ import "./styles/Sermons.css";
 import "./styles/About.css";
 import "./styles/Contact.css";
 import "./styles/Footer.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./component/Home";
 import ButtonAppBar from "./component/Header";
 import Footer from "./component/Footer";
@@ -26,22 +26,22 @@ function App() {
 
   return (
     <>
-      <Router>
-        <ButtonAppBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/" element={<Login />} />
-          <Route path="/family" element={<Family />} />
-          <Route path="/sermon" element={<BasicCard />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/stream" element={<Stream />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/donation" element={<Donation />} />
-          <Route path="/calendar" element={<Calendar />} />
-        </Routes>
-        <Footer />
-      </Router>
+      <ButtonAppBar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/family" element={<Family />} />
+        <Route path="/sermon" element={<BasicCard />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/stream" element={<Stream />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/donation" element={<Donation />} />
+        <Route path="/calendar" element={<Calendar />} />
+      </Routes>
+
+      <Footer />
     </>
   );
 }
