@@ -139,7 +139,10 @@ export default function Sermons() {
   useEffect(() => {
     axios
       .get(`${API_URL}/api/sermons/sermons/`)
-      .then((res) => {console.log("SERMONS:", res.data); setSermons(res.data)})
+      .then((res) => {
+        console.log("SERMONS:", res.data);
+        setSermons(res.data);
+      })
       .catch((err) => console.error(err));
   }, [API_URL]);
 
@@ -154,8 +157,10 @@ export default function Sermons() {
   };
 
   const video = selectedSermon?.media_files?.find(
-    (m) => m.media_type === "video"
+    (m) => m.media_type === "video",
   );
+  console.log("SELECTED SERMON:", selectedSermon);
+  console.log("VIDEO:", video);
 
   return (
     <>
@@ -169,9 +174,11 @@ export default function Sermons() {
         }}
       >
         {sermons.map((sermon) => {
+          console.log("SERMON", sermon);
           const thumbnail = sermon.media_files?.find(
-            (m) => m.media_type === "image"
+            (m) => m.media_type === "image",
           );
+          console.log("SERMON", sermon);
 
           return (
             <Card
@@ -211,20 +218,11 @@ export default function Sermons() {
       </div>
 
       {/* MODAL PLAYER */}
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        maxWidth="md"
-        fullWidth
-      >
-        <DialogTitle>
-          {selectedSermon?.title}
-        </DialogTitle>
+      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
+        <DialogTitle>{selectedSermon?.title}</DialogTitle>
 
         <DialogContent>
-          <Typography sx={{ mb: 2 }}>
-            {selectedSermon?.description}
-          </Typography>
+          <Typography sx={{ mb: 2 }}>{selectedSermon?.description}</Typography>
 
           {video && (
             <video
