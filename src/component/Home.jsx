@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 export default function Home() {
   return (
     <>
-      <div className="bg-image">Home</div>
+      <div className="bg-image"></div>
       <Card variant="outlines" sx={{ maxWidth: "75rem", bgcolor:"transparent" }} className="join-us">
         <CardContent className="Hero">
           Deuteronomy 6:5-6, And thou shalt love the Lord thy God with all thine heart, and with
