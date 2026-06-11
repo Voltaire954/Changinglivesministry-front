@@ -118,6 +118,7 @@
 //     </>
 //   );
 // }
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -130,118 +131,261 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 
 export default function Sermons() {
-  const API_URL = import.meta.env.VITE_API_BASE_URL;
+const API_URL = import.meta.env.VITE_API_BASE_URL;
 
-  const [sermons, setSermons] = useState([]);
-  const [open, setOpen] = useState(false);
-  const [selectedSermon, setSelectedSermon] = useState(null);
+const [sermons, setSermons] = useState([]);
+const [open, setOpen] = useState(false);
+const [selectedSermon, setSelectedSermon] = useState(null);
 
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/api/sermons/sermons/`)
-      .then((res) => {
-        console.log("SERMONS:", res.data);
-        setSermons(res.data);
-      })
-      .catch((err) => console.error(err));
-  }, [API_URL]);
+useEffect(() => {
+axios
+.get(${API_URL}/api/sermons/sermons/)
+.then((res) => {
+console.log("SERMONS:", res.data);
+setSermons(res.data);
+})
+.catch((err) => console.error("Sermon API Error:", err));
+}, [API_URL]);
 
-  const handleOpen = (sermon) => {
-    setSelectedSermon(sermon);
-    setOpen(true);
-  };
+const handleOpen = (sermon) => {
+console.log("SELECTED SERMON:", sermon);
+setSelectedSermon(sermon);
+setOpen(true);
+};
 
-  const handleClose = () => {
-    setOpen(false);
-    setSelectedSermon(null);
-  };
+const handleClose = () => {
+setOpen(false);
+setSelectedSermon(null);
+};
 
-  const video = selectedSermon?.media_files?.find(
-    (m) => m.media_type === "video",
-  );
-  console.log("SELECTED SERMON:", selectedSermon);
-  console.log("VIDEO:", video);
+const getEmbedUrl = (url) => {
+if (!url) return null;
 
-  return (
-    <>
-      {/* GRID */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-          gap: "2rem",
-          padding: "2rem",
-        }}
-      >
-        {sermons.map((sermon) => {
-          console.log("SERMON", sermon);
-          const thumbnail = sermon.media_files?.find(
-            (m) => m.media_type === "image",
-          );
-          console.log("SERMON", sermon);
-
-          return (
-            <Card
-              key={sermon.id}
-              onClick={() => handleOpen(sermon)}
-              sx={{
-                borderRadius: 3,
-                cursor: "pointer",
-                transition: "0.3s ease",
-                "&:hover": {
-                  transform: "translateY(-6px)",
-                  boxShadow: 12,
-                },
-              }}
-            >
-              {thumbnail && (
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={thumbnail.file}
-                  alt={thumbnail.title}
-                />
-              )}
-
-              <CardContent>
-                <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                  {sermon.title}
-                </Typography>
-
-                <Typography variant="body2" color="text.secondary">
-                  {sermon.description?.slice(0, 100)}...
-                </Typography>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </div>
-
-      {/* MODAL PLAYER */}
-      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
-        <DialogTitle>{selectedSermon?.title}</DialogTitle>
-
-        <DialogContent>
-          <Typography sx={{ mb: 2 }}>{selectedSermon?.description}</Typography>
-
-          {video && (
-            <video
-              controls
-              autoPlay
-              style={{
-                width: "100%",
-                borderRadius: "10px",
-                background: "black",
-              }}
-            >
-              <source src={video.file} type="video/mp4" />
-            </video>
-          )}
-        </DialogContent>
-      </Dialog>
-    </>
-  );
+if (url.includes("youtube.com/watch?v=")) {
+  return url.replace("watch?v=", "embed/").split("&")[0];
 }
+
+if (url.includes("youtu.be/")) {
+  const id = url.split("youtu.be/")[1];
+  return `https://www.youtube.com/embed/${id}`;
+}
+
+return url;
+
+
+
+};
+
+return (
+<>
+<div
+style={{
+display: "grid",
+gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+gap: "2rem",
+padding: "2rem",
+}}
+>
+{sermons.map((sermon) => (
+<Card
+key={sermon.id}
+onClick={() => handleOpen(sermon)}
+sx={{
+borderRadius: 3,
+cursor: "pointer",
+transition: "0.3s ease",
+"&:hover": {
+transform: "translateY(-6px)",
+boxShadow: 12,
+},
+}}
+>
+{sermon.thumbnail && (
+
+)}
+
+        <CardContent>
+          <Typography
+            variant="h6"
+            sx={{ fontWeight: 700 }}
+          >
+            {sermon.title}
+          </Typography>
+
+          <Typography
+            variant="body2"
+            color="text.secondary"
+          >
+            {sermon.description?.slice(0, 100)}...
+          </Typography>
+        </CardContent>
+      </Card>
+    ))}
+  </div>
+
+  <Dialog
+    open={open}
+    onClose={handleClose}
+    maxWidth="md"
+    fullWidth
+  >
+    <DialogTitle>
+      {selectedSermon?.title}
+    </DialogTitle>
+
+    <DialogContent>
+      <Typography sx={{ mb: 2 }}>
+        {selectedSermon?.description}
+      </Typography>
+
+      {selectedSermon?.video_url && (
+        <iframe
+          width="100%"
+          height="450"
+          src={getEmbedUrl(selectedSermon.video_url)}
+          title={selectedSermon.title}
+          allowFullScreen
+          style={{
+            border: "none",
+            borderRadius: "10px",
+          }}
+        />
+      )}
+    </DialogContent>
+  </Dialog>
+</>
+
+
+
+);
+}
+
+
+
+// import { useState, useEffect } from "react";
+// import axios from "axios";
+
+// import Card from "@mui/material/Card";
+// import CardContent from "@mui/material/CardContent";
+// import Typography from "@mui/material/Typography";
+// import CardMedia from "@mui/material/CardMedia";
+// import Dialog from "@mui/material/Dialog";
+// import DialogTitle from "@mui/material/DialogTitle";
+// import DialogContent from "@mui/material/DialogContent";
+
+// export default function Sermons() {
+//   const API_URL = import.meta.env.VITE_API_BASE_URL;
+
+//   const [sermons, setSermons] = useState([]);
+//   const [open, setOpen] = useState(false);
+//   const [selectedSermon, setSelectedSermon] = useState(null);
+
+//   useEffect(() => {
+//     axios
+//       .get(`${API_URL}/api/sermons/sermons/`)
+//       .then((res) => {
+//         console.log("SERMONS:", res.data);
+//         setSermons(res.data);
+//       })
+//       .catch((err) => console.error(err));
+//   }, [API_URL]);
+
+//   const handleOpen = (sermon) => {
+//     setSelectedSermon(sermon);
+//     setOpen(true);
+//   };
+
+//   const handleClose = () => {
+//     setOpen(false);
+//     setSelectedSermon(null);
+//   };
+
+//   const video = selectedSermon?.media_files?.find(
+//     (m) => m.media_type === "video",
+//   );
+//   console.log("SELECTED SERMON:", selectedSermon);
+//   console.log("VIDEO:", video);
+
+//   return (
+//     <>
+//       {/* GRID */}
+//       <div
+//         style={{
+//           display: "grid",
+//           gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+//           gap: "2rem",
+//           padding: "2rem",
+//         }}
+//       >
+//         {sermons.map((sermon) => {
+//           console.log("SERMON", sermon);
+//           const thumbnail = sermon.media_files?.find(
+//             (m) => m.media_type === "image",
+//           );
+//           console.log("SERMON", sermon);
+
+//           return (
+//             <Card
+//               key={sermon.id}
+//               onClick={() => handleOpen(sermon)}
+//               sx={{
+//                 borderRadius: 3,
+//                 cursor: "pointer",
+//                 transition: "0.3s ease",
+//                 "&:hover": {
+//                   transform: "translateY(-6px)",
+//                   boxShadow: 12,
+//                 },
+//               }}
+//             >
+//               {thumbnail && (
+//                 <CardMedia
+//                   component="img"
+//                   height="200"
+//                   image={thumbnail.file}
+//                   alt={thumbnail.title}
+//                 />
+//               )}
+
+//               <CardContent>
+//                 <Typography variant="h6" sx={{ fontWeight: 700 }}>
+//                   {sermon.title}
+//                 </Typography>
+
+//                 <Typography variant="body2" color="text.secondary">
+//                   {sermon.description?.slice(0, 100)}...
+//                 </Typography>
+//               </CardContent>
+//             </Card>
+//           );
+//         })}
+//       </div>
+
+//       {/* MODAL PLAYER */}
+//       <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
+//         <DialogTitle>{selectedSermon?.title}</DialogTitle>
+
+//         <DialogContent>
+//           <Typography sx={{ mb: 2 }}>{selectedSermon?.description}</Typography>
+
+//           {video && (
+//             <video
+//               controls
+//               autoPlay
+//               style={{
+//                 width: "100%",
+//                 borderRadius: "10px",
+//                 background: "black",
+//               }}
+//             >
+//               <source src={video.file} type="video/mp4" />
+//             </video>
+//           )}
+//         </DialogContent>
+//       </Dialog>
+//     </>
+//   );
+// }
 
 // import { useState, useEffect } from "react";
 // import axios from "axios";
