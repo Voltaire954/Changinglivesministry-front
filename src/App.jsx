@@ -8,6 +8,7 @@ import "./styles/Sermons.css";
 import "./styles/About.css";
 import "./styles/Contact.css";
 import "./styles/Footer.css";
+import "./styles/Calendar.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./component/Home";
 import ButtonAppBar from "./component/Header";

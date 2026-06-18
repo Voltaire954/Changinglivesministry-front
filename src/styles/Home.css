@@ -1,3 +1,4 @@
+/* =========================
 .bg-image {
     background-image: url("/mr_mrs_Bembry2.jpg");
     max-width: 1200px;
@@ -18,11 +19,12 @@
     align-content: stretch;
     justify-content: space-evenly;
     align-items: center;
+    background-color: rgb(0, 110, 74);
 }
 
 .MuiToolbar-root a {
     text-decoration: none;
-    color: inherit;
+    color: rgba(241, 205, 0, 0.925);
     font-weight: 500;
     padding: 0 12px;
 }
@@ -31,8 +33,253 @@
     margin-left: 16px;
 }
 
-.Hero{
+.Hero {
     font-size: 1.5rem;
     font-style: oblique;
+
+}
+
+
+.menu-button {
+    display: none;
+}
+
+.app-bar2 .MuiToolbar-root {
+    display: none;
+}
+
+@media (max-width:720px) {
+    .app-bar .MuiToolbar-root {
+        display: none;
+    }
+
+    .app-bar2 .MuiToolbar-root {
+        background-color: rgb(0, 110, 74);
+        justify-content: flex-start;
+        gap: 20px;
+        display: flex;
+        align-content: center;
+    }
+
+    .app-bar2 .MuiToolbar-root {
+        color: white;
+        text-decoration: none;
+    }
+
+    .menu-button {
+        display: flex;
+    }
+
+
+    .bg-image {
+    background-image: url("/mr_mrs_Bembry2.jpg");
+    max-width: 1200px;
+    height: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex
+}
+
+    .bg-image2 {
+        background-image: url("/mr_mrs_Bembry3.jpg");
+        max-width: 100rem;
+        height: auto;
+        background-size: contain;
+        object-fit: contain;
+        background-repeat: no-repeat;
+    }
+
+}
+
+========================= */
+.app-bar2 .MuiToolbar-root {
+    display: none;
+}
+
+
+.MuiToolbar-root {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(0, 110, 74);
+}
+
+.MuiToolbar-root a {
+    text-decoration: none;
+    color: rgba(241, 205, 0, 0.925);
+    font-weight: 500;
+    padding: 0 12px;
+}
+
+.MuiToolbar-root .MuiButton-root {
+    margin-left: 16px;
+}
+
+
+
+
+.hero-section {
+    min-height: 100vh;
+    background-image: url("/mr_mrs_Bembry2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.hero-card {
+    max-width: 800px;
+    width: 90%;
+
+    text-align: center;
+
+    background: rgba(0, 0, 0, 0.65) !important;
+    color: white !important;
+
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.hero-card h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: rgba(241, 205, 0, 0.925);
+}
+
+.hero-scripture {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-text {
+    font-size: 1.25rem;
+    line-height: 1.8;
+}
+
+/* =========================
+   WELCOME SECTION
+========================= */
+
+.welcome-section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.welcome-section h2 {
+    font-size: 2rem;
+    color: rgb(0, 110, 74);
+}
+
+.welcome-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* =========================
+   SECOND IMAGE SECTION
+========================= */
+
+.secondary-hero {
+    min-height: 70vh;
+
+    background-image: url("/mr_mrs_Bembry3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.secondary-overlay {
+    min-height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: white;
+
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.secondary-overlay h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.secondary-overlay p {
+    font-size: 1.2rem;
+    max-width: 700px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 720px) {
+
+    .hero-card {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .hero-card h1 {
+        font-size: 2rem;
+    }
+
+    .hero-scripture {
+        font-size: 1.1rem;
+    }
+
+    .hero-text {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .secondary-overlay h2 {
+        font-size: 1.75rem;
+    }
+
+    .secondary-overlay p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .app-bar .MuiToolbar-root {
+        display: none;
+    }
+
+    .app-bar2 .MuiToolbar-root {
+        background-color: rgb(0, 110, 74);
+        justify-content: flex-start;
+        gap: 20px;
+        display: flex;
+        align-content: center;
+    }
+
+    .app-bar2 .MuiToolbar-root {
+        color: white;
+        text-decoration: none;
+    }
+
 
 }

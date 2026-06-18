@@ -1,0 +1,186 @@
+/* ==========================
+   HERO
+========================== */
+
+.about-hero {
+    min-height: 70vh;
+    background-image: url("/Joinus.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.about-overlay {
+    min-height: 70vh;
+
+    background: rgba(0, 0, 0, .55);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.about-content {
+    width: 90%;
+    max-width: 900px;
+    color: white;
+}
+
+.about-content h1 {
+    font-size: 3rem;
+    color: rgba(241, 205, 0, .925);
+    margin-bottom: 1rem;
+}
+
+.about-content p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+}
+
+/* ==========================
+   SCRIPTURE
+========================== */
+
+.about-scripture {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: #f5f5f5;
+}
+
+.about-scripture blockquote {
+    font-size: 2rem;
+    color: rgb(0, 110, 74);
+    margin-bottom: 1rem;
+}
+
+.about-scripture p {
+    max-width: 900px;
+    margin: auto;
+    line-height: 1.8;
+    font-size: 1.15rem;
+}
+
+/* ==========================
+   MISSION
+========================== */
+
+.about-mission {
+    max-width: 1200px;
+    margin: auto;
+    padding: 5rem 2rem;
+
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.mission-image {
+    flex: 1;
+}
+
+.mission-image img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+}
+
+.mission-text {
+    flex: 1;
+}
+
+.mission-text h2 {
+    color: rgb(0, 110, 74);
+    margin-bottom: 1rem;
+}
+
+.mission-text p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* ==========================
+   VALUES
+========================== */
+
+.values-section {
+    padding: 5rem 2rem;
+    background: #fafafa;
+    text-align: center;
+}
+
+.values-section h2 {
+    margin-bottom: 3rem;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.value-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .1);
+}
+
+.value-card h3 {
+    color: rgb(0, 110, 74);
+}
+
+/* ==========================
+   CTA
+========================== */
+
+.about-cta {
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.join-btn {
+    background: rgb(0, 110, 74);
+    color: white;
+
+    border: none;
+    padding: 1rem 2rem;
+
+    border-radius: 8px;
+    cursor: pointer;
+
+    margin-top: 1rem;
+}
+
+.join-btn:hover {
+    opacity: .9;
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 720px) {
+
+    .about-content h1 {
+        font-size: 2rem;
+    }
+
+    .about-content p {
+        font-size: 1rem;
+    }
+
+    .about-mission {
+        flex-direction: column;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-scripture blockquote {
+        font-size: 1.4rem;
+    }
+}

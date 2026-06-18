@@ -1,0 +1,164 @@
+/* ==========================
+   HERO
+========================== */
+
+.calendar-hero {
+    min-height: 70vh;
+    background-image: url("/Family6.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.calendar-overlay {
+    min-height: 70vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, .55);
+
+    text-align: center;
+}
+
+.calendar-content {
+    width: 90%;
+    max-width: 900px;
+    color: white;
+}
+
+.calendar-content h1 {
+    font-size: 3rem;
+    color: rgba(241, 205, 0, .925);
+    margin-bottom: 1rem;
+}
+
+.calendar-content p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+}
+
+/* ==========================
+   SCRIPTURE
+========================== */
+
+.calendar-scripture {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #f5f5f5;
+}
+
+.calendar-scripture blockquote {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: auto;
+}
+
+.calendar-scripture p {
+    color: rgb(0, 110, 74);
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+/* ==========================
+   INTRO
+========================== */
+
+.calendar-intro {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.calendar-intro h2 {
+    color: rgb(0, 110, 74);
+    margin-bottom: 1rem;
+}
+
+/* ==========================
+   CALENDAR
+========================== */
+
+.calendar-wrapper {
+    padding: 2rem;
+}
+
+.calendar-container {
+    max-width: 1200px;
+    margin: auto;
+
+    background: white;
+
+    padding: 2rem;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
+}
+
+/* ==========================
+   FULLCALENDAR
+========================== */
+
+.fc {
+    font-family: inherit;
+}
+
+.fc-toolbar-title {
+    color: rgb(0, 110, 74);
+    font-weight: bold;
+}
+
+.fc-button {
+    background-color: rgb(0, 110, 74) !important;
+    border: none !important;
+}
+
+.fc-daygrid-event {
+    background-color: rgba(241, 205, 0, .925) !important;
+    color: black !important;
+    border: none !important;
+}
+
+/* ==========================
+   CTA
+========================== */
+
+.calendar-cta {
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.calendar-cta p {
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:720px) {
+
+    .calendar-content h1 {
+        font-size: 2rem;
+    }
+
+    .calendar-content p {
+        font-size: 1rem;
+    }
+
+    .calendar-scripture blockquote {
+        font-size: 1.1rem;
+    }
+
+    .calendar-container {
+        padding: 1rem;
+    }
+
+    .fc-toolbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

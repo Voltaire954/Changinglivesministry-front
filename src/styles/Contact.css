@@ -1,0 +1,195 @@
+/* ==========================
+   HERO
+========================== */
+
+.contact-hero {
+    min-height: 70vh;
+    background-image: url("/Family8.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.contact-overlay {
+    min-height: 70vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background: rgba(0, 0, 0, .55);
+}
+
+.contact-content {
+    width: 90%;
+    max-width: 900px;
+    color: white;
+}
+
+.contact-content h1 {
+    font-size: 3rem;
+    color: rgba(241, 205, 0, .925);
+    margin-bottom: 1rem;
+}
+
+.contact-content p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+}
+
+/* ==========================
+   SCRIPTURE
+========================== */
+
+.contact-scripture {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: #f5f5f5;
+}
+
+.contact-scripture blockquote {
+    max-width: 900px;
+    margin: auto;
+
+    font-size: 1.5rem;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+.contact-scripture p {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: rgb(0, 110, 74);
+}
+
+/* ==========================
+   CONTACT CARDS
+========================== */
+
+.contact-section {
+    padding: 5rem 2rem;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    max-width: 1200px;
+    margin: auto;
+}
+
+.contact-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .1);
+
+    text-align: center;
+}
+
+.contact-card h3 {
+    color: rgb(0, 110, 74);
+    margin-bottom: 1rem;
+}
+
+.contact-card p {
+    line-height: 1.8;
+}
+
+/* ==========================
+   MAP
+========================== */
+
+.map-section {
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.map-section h2 {
+    margin-bottom: 2rem;
+}
+
+.map-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 500px;
+
+    border: none;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
+}
+
+/* ==========================
+   VISITOR CTA
+========================== */
+
+.visitor-section {
+    padding: 5rem 2rem;
+    text-align: center;
+    background: #fafafa;
+}
+
+.visitor-section h2 {
+    margin-bottom: 1rem;
+}
+
+.visitor-section p {
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+.visit-btn {
+    margin-top: 2rem;
+
+    padding: 1rem 2rem;
+
+    background: rgb(0, 110, 74);
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 1rem;
+}
+
+.visit-btn:hover {
+    opacity: .9;
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 720px) {
+
+    .contact-content h1 {
+        font-size: 2rem;
+    }
+
+    .contact-content p {
+        font-size: 1rem;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-scripture blockquote {
+        font-size: 1.1rem;
+    }
+
+    .map-container iframe {
+        height: 350px;
+    }
+}

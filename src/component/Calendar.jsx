@@ -26,7 +26,7 @@ export default function Calendar() {
     axios
       .get(`${API_URL}/api/services/services/`)
       .then((res) => {
-      console.log("API DATA:", res.data);
+        console.log("API DATA:", res.data);
 
         setEvents(
           res.data.map((service) => ({
@@ -58,20 +58,59 @@ export default function Calendar() {
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "ghostwhite",
-        padding: "1rem",
-        borderRadius: "8px",
-        color: "black",
-      }}
-    >
-      <FullCalendar
-        plugins={[dayGridPlugin]}
-        initialView="dayGridMonth"
-        events={events}
-        eventClick={handleEventClick}
-      />
+    <>
+      <section className="calendar-hero">
+        <div className="calendar-overlay">
+          <div className="calendar-content">
+            <h1>Church Calendar</h1>
+
+            <p>
+              Stay connected with worship services, ministry events, fellowship
+              gatherings, and community outreach opportunities.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="calendar-scripture">
+        <blockquote>
+          "To every thing there is a season, and a time to every purpose under
+          the heaven."
+        </blockquote>
+
+        <p>Ecclesiastes 3:1</p>
+      </section>
+
+      <section className="calendar-intro">
+        <h2>Upcoming Services & Events</h2>
+
+        <p>
+          View upcoming worship services, bible studies, youth events,
+          fellowship gatherings, and ministry activities.
+        </p>
+      </section>
+
+      <section className="calendar-wrapper">
+        <div className="calendar-container">
+          <FullCalendar
+            plugins={[dayGridPlugin]}
+            initialView="dayGridMonth"
+            events={events}
+            eventClick={handleEventClick}
+          />
+        </div>
+      </section>
+
+      <section className="calendar-cta">
+        <h2>Join Us</h2>
+
+        <p>
+          We welcome visitors, families, and believers from all walks of life.
+          Check the calendar regularly for upcoming events.
+        </p>
+      </section>
+
+      {/* KEEP YOUR EXISTING DIALOG EXACTLY AS IS */}
 
       <Dialog
         open={open}
@@ -86,6 +125,7 @@ export default function Calendar() {
             <p>
               <strong>Description:</strong>
             </p>
+
             <p>
               {selectedEvent?.extendedProps?.description ||
                 "No description available"}
@@ -116,7 +156,7 @@ export default function Calendar() {
           <Button onClick={() => setOpen(false)}>Close</Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </>
   );
 }
 

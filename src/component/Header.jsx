@@ -8,13 +8,16 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Donation from "./Donation";
 import Calendar from "./Calendar";
-
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export default function Header() {
   const [loginOpen, setLoginOpen] = useState(false);
   const [signupOpen, setSignupOpen] = useState(false);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   // Load user from localStorage on mount
   useEffect(() => {
@@ -48,9 +51,10 @@ export default function Header() {
           display: "flex",
           justifyContent: "space-around",
           flexWrap: "wrap",
+          backgroundColor: "red",
         }}
       >
-        <AppBar position="static">
+        <AppBar className="app-bar" position="static">
           <Toolbar>
             <Link to="/">Home</Link>
             <Link to="/family">Family</Link>
@@ -85,7 +89,66 @@ export default function Header() {
           </Toolbar>
         </AppBar>
       </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-around",
+          flexWrap: "wrap",
+          backgroundColor: "red",
+        }}
+      >
+        <AppBar className="app-bar2" position="static">
+          <Toolbar>
+            <Link to="/">Home</Link>
 
+            <Link to="/sermon">Sermons</Link>
+
+            <Link to="/stream">Lives</Link>
+            <IconButton
+            className=" menu-button"
+              sx={{ marginLeft: "auto", color: "white" }}
+              onClick={() => setDrawerOpen(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+      </Box>
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+      >
+        <Box
+          sx={{
+            width: 250,
+            display: "flex",
+            flexDirection: "column",
+            padding: 2,
+            gap: 2,
+          }}
+        >
+          <Link to="/family" onClick={() => setDrawerOpen(false)}>
+            Family
+          </Link>
+
+          <Link to="/about" onClick={() => setDrawerOpen(false)}>
+            About Us
+          </Link>
+
+          <Link to="/contact" onClick={() => setDrawerOpen(false)}>
+            Contact Us
+          </Link>
+
+          <Link to="/calendar" onClick={() => setDrawerOpen(false)}>
+            Calendar
+          </Link>
+
+          <Link to="/donation" onClick={() => setDrawerOpen(false)}>
+            Donations
+          </Link>
+        </Box>
+      </Drawer>
       <Login
         open={loginOpen}
         handleClose={() => setLoginOpen(false)}
