@@ -129,6 +129,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 export default function Sermons() {
   const API_URL = import.meta.env.VITE_API_BASE_URL;
@@ -137,8 +139,17 @@ export default function Sermons() {
   const [open, setOpen] = useState(false);
   const [selectedSermon, setSelectedSermon] = useState(null);
 
+  const [page, setPage] = useState(1);
+
+  const sermonsPerPage = 6;
+
+  const indexOfLast = page * sermonsPerPage;
+  const indexOfFirst = indexOfLast - sermonsPerPage;
+
+  const currentSermons = sermons.slice(indexOfFirst, indexOfLast);
+
   // 👉 STATIC fallback image (put your logo in /public/logo.png)
-  const fallbackThumbnail = "/logo.png";
+  const fallbackThumbnail = "/changing_vid_image.png";
 
   useEffect(() => {
     axios
@@ -189,7 +200,7 @@ export default function Sermons() {
           padding: "2rem",
         }}
       >
-        {sermons.map((sermon) => (
+        {currentSermons.map((sermon) => (
           <Card
             key={sermon.id}
             onClick={() => handleOpen(sermon)}
@@ -206,11 +217,13 @@ export default function Sermons() {
             {/* ✅ STATIC THUMBNAIL ALWAYS */}
             <CardMedia
               component="img"
-              height="200"
+              height="220"
               image={fallbackThumbnail}
-              alt="Church Logo"
+              alt={sermon.title}
+              sx={{
+                objectFit: "cover",
+              }}
             />
-
             <CardContent>
               <Typography variant="h6" sx={{ fontWeight: 700 }}>
                 {sermon.title}
@@ -223,15 +236,28 @@ export default function Sermons() {
           </Card>
         ))}
       </div>
+      <Stack
+        spacing={2}
+        sx={{
+          alignItems: "center",
+          mb: 4,
+        }}
+      >
+        <Pagination
+          count={Math.ceil(sermons.length / sermonsPerPage)}
+          page={page}
+          onChange={(event, value) => setPage(value)}
+          color="primary"
+          size="large"
+        />
+      </Stack>
 
       {/* MODAL PLAYER */}
       <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
         <DialogTitle>{selectedSermon?.title}</DialogTitle>
 
         <DialogContent>
-          <Typography sx={{ mb: 2 }}>
-            {selectedSermon?.description}
-          </Typography>
+          <Typography sx={{ mb: 2 }}>{selectedSermon?.description}</Typography>
 
           {selectedSermon?.video_url && (
             <iframe
