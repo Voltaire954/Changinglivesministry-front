@@ -46,16 +46,10 @@ export default function Header() {
 
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-around",
-          flexWrap: "wrap",
-          backgroundColor: "red",
-        }}
-      >
+      <Box>
         <AppBar className="app-bar" position="static">
           <Toolbar>
+            <div className="logo" onClick={() => navigate("/")}></div>
             <Link to="/">Home</Link>
             <Link to="/family">Family</Link>
             <Link to="/sermon">Sermons</Link>
@@ -99,14 +93,15 @@ export default function Header() {
       >
         <AppBar className="app-bar2" position="static">
           <Toolbar>
+            <div className="logo" onClick={() => navigate("/")} />
             <Link to="/">Home</Link>
 
             <Link to="/sermon">Sermons</Link>
 
             <Link to="/stream">Lives</Link>
             <IconButton
-            className=" menu-button"
-              sx={{ marginLeft: "auto", color: "white" }}
+              className=" menu-button"
+              sx={{ marginLeft: "auto", color: "black" }}
               onClick={() => setDrawerOpen(true)}
             >
               <MenuIcon />

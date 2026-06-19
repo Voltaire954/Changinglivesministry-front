@@ -92,25 +92,42 @@
 }
 
 ========================= */
+.app-bar {
+    background-color: transparent !important;
+    background-image: none !important;
+    color: inherit !important;
+    box-shadow: none !important;
+}
+
 .app-bar2 .MuiToolbar-root {
     display: none;
 }
 
 
-.MuiToolbar-root {
+.app-bar .MuiToolbar-root {
     display: flex;
     flex-wrap: wrap;
-    align-content: stretch;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: rgb(0, 110, 74);
+    align-items: baseline;
+    justify-content: space-around;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 200px;
+    box-shadow: none;
+
+
+
+
 }
 
 .MuiToolbar-root a {
     text-decoration: none;
-    color: rgba(241, 205, 0, 0.925);
+    color: rgb(0, 3, 187);
     font-weight: 500;
     padding: 0 12px;
+
+}
+
+.MuiToolbar-root :hover {
+    color: rgb(94, 255, 0);
 }
 
 .MuiToolbar-root .MuiButton-root {
@@ -130,6 +147,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 7px;
+    overflow: hidden;
 }
 
 .hero-overlay {
@@ -150,16 +169,17 @@
     text-align: center;
 
     background: rgba(0, 0, 0, 0.65) !important;
-    color: white !important;
+    color: rgba(255, 255, 255, 0.774) !important;
 
     padding: 2rem;
     border-radius: 12px;
+    overflow: hidden;
 }
 
 .hero-card h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: rgba(241, 205, 0, 0.925);
+    color: rgba(255, 231, 94, 0.801);
 }
 
 .hero-scripture {
@@ -205,6 +225,8 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    border-radius: 7px;
+    overflow: hidden;
 }
 
 .secondary-overlay {
@@ -219,6 +241,7 @@
     color: white;
 
     background: rgba(0, 0, 0, 0.45);
+    border-radius: 7px;
 }
 
 .secondary-overlay h2 {
@@ -264,20 +287,28 @@
         padding: 0 1rem;
     }
 
+    .app-bar2 {
+        background-color: transparent !important;
+        background-image: none !important;
+        color: inherit !important;
+        box-shadow: none !important;
+    }
+
     .app-bar .MuiToolbar-root {
         display: none;
     }
 
     .app-bar2 .MuiToolbar-root {
-        background-color: rgb(0, 110, 74);
-        justify-content: flex-start;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 3, 187);
+        justify-content: space-around;
         gap: 20px;
         display: flex;
-        align-content: center;
+        align-content: baseline;
     }
 
     .app-bar2 .MuiToolbar-root {
-        color: white;
+        color: rgb(0, 0, 0);
         text-decoration: none;
     }
 

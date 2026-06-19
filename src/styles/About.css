@@ -7,6 +7,7 @@
     background-image: url("/Joinus.jpg");
     background-size: cover;
     background-position: center;
+    border-radius: 7px;
 }
 
 .about-overlay {
@@ -44,7 +45,8 @@
 .about-scripture {
     padding: 4rem 2rem;
     text-align: center;
-    background: #f5f5f5;
+    background: #ffffff;
+    border-radius: 7px;
 }
 
 .about-scripture blockquote {
@@ -76,6 +78,7 @@
 
 .mission-image {
     flex: 1;
+    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.726);
 }
 
 .mission-image img {
@@ -121,7 +124,7 @@
 }
 
 .value-card {
-    background: white;
+    background: rgb(255, 255, 255);
     padding: 2rem;
     border-radius: 12px;
 
